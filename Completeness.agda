@@ -331,13 +331,13 @@ trans-perm (x ∷ xs) ys (z ∷ zs) (acc go)  p1 p2 with concat-map-lemma {_} {y
 ... | inj₁ (es , rs , refl , p2) =
   let ih = trans-perm (ks ++ js) (es ++ rs ++ us) (ts ++ ps) (go (length ((ks ++ js) ++ (es ++ rs ++ us) ++ ts ++ ps)) (wf-snd ks js us es rs ts ps x z z)) p2 r6
   in let l1 = inject-arbitrary (es ++ rs) us ks js z (subst (_∈ perm (ks ++ js)) (sym (++-assoc es rs us )) ih) 
-  in let dayum = inject-one es (rs ++ z ∷ us) (perm (ks ++ z ∷ js)) x (subst (_∈ perm (ks ++ z ∷ js)) (++-assoc es rs (z ∷ us)) l1 )
-  in subst (_∈ (perm (x ∷ ks ++ z ∷ js))) (sym (++-assoc es (x ∷ rs) (z ∷ us))) dayum
+  in let day = inject-one es (rs ++ z ∷ us) (perm (ks ++ z ∷ js)) x (subst (_∈ perm (ks ++ z ∷ js)) (++-assoc es rs (z ∷ us)) l1 )
+  in subst (_∈ (perm (x ∷ ks ++ z ∷ js))) (sym (++-assoc es (x ∷ rs) (z ∷ us))) day
 ... | inj₂ (es , rs , refl , p2) =
   let ih = trans-perm (ks ++ js) (vs ++ es ++ rs) (ts ++ ps) (go (length ((ks ++ js) ++ (vs ++ es ++ rs) ++ ts ++ ps)) (wf-trd ks js vs es rs ts ps x z z))  p2 r6 
   in let l1 = inject-arbitrary vs (es ++ rs) ks js z ih
-  in let dayum = inject-one (vs ++ z ∷ es) rs (perm (ks ++ z ∷ js)) x (subst (_∈ perm (ks ++ z ∷ js)) (sym (++-assoc vs (z ∷ es) rs)) l1) 
-  in subst (_∈ perm (x ∷ ks ++ z ∷ js)) (++-assoc vs (z ∷ es) (x ∷ rs)) dayum
+  in let day = inject-one (vs ++ z ∷ es) rs (perm (ks ++ z ∷ js)) x (subst (_∈ perm (ks ++ z ∷ js)) (sym (++-assoc vs (z ∷ es) rs)) l1) 
+  in subst (_∈ perm (x ∷ ks ++ z ∷ js)) (++-assoc vs (z ∷ es) (x ∷ rs)) day
 
 
 
