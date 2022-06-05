@@ -9,10 +9,9 @@ open import Data.List.Membership.Propositional.Properties using (∈-++⁺ˡ; �
 open import Agda.Builtin.Equality using (_≡_; refl)
 open import Agda.Builtin.Bool using (false; true)
 open import Relation.Binary.PropositionalEquality using (sym; subst) renaming (trans to transeq)
-open import Relation.Nullary using (¬_; _because_)
+open import Relation.Nullary using (¬_)
 open import Data.List.Relation.Unary.Any as Any using (here; there)
 open import Data.Empty using (⊥-elim)
-open import Function using (const)
 open import Induction.Nat
 open import Induction.WellFounded
 open import Permutations
@@ -74,7 +73,7 @@ skip-base a _ (ys ∷ yss) (here px) rewrite px = ∈-++⁺ˡ (distr-base a  ys)
 skip-base a xs (ys ∷ yss) (there p) = let ih = skip-base a xs yss p in ∈-++⁺ʳ (distr a ys) ih
 
 ++-lemma : ∀ {A : Set} {l : List A} {xs ys : List (List A)}
-      → l ∈ (xs ++ ys)
+      → l ∈ (xs ++ ys)
       → l ∈ xs ⊎ l ∈ ys
 ++-lemma {xs = []} i = inj₂ i
 ++-lemma {xs = xs ∷ xs₁} (here px) = inj₁ (here px)
@@ -82,9 +81,9 @@ skip-base a xs (ys ∷ yss) (there p) = let ih = skip-base a xs yss p in ∈-++�
 ... | inj₁ a = inj₁ (there a)
 ... | inj₂ b = inj₂ b
 
-concat-map-lemma : ∀ {A : Set} {l′ : List A} {xs : List (List A)} {f : List A → List (List A)}
-      → l′ ∈ concatMap f xs
-      → ∃[ l ] (l′ ∈ f l × l ∈ xs)
+concat-map-lemma : ∀ {A : Set} {ys : List A} {xs : List (List A)} {f : List A → List (List A)}
+      → ys ∈ concatMap f xs
+      → ∃[ l ] (ys ∈ f l × l ∈ xs)
 concat-map-lemma {xs = []} ()
 concat-map-lemma {xs = xs ∷ xs₁} {f = f} i with ++-lemma {xs = f xs} i
 ... | inj₁ x = xs , x , here refl

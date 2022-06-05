@@ -34,3 +34,6 @@ complete : ∀{xs ys : List A}
     -----------------
   → ys ∈ perm xs 
 ```
+
+## Credits
+Co-authored by [@iwilare](https://github.com/iwilare)
